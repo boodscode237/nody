@@ -27,6 +27,7 @@ const server = http.createServer((req, res) => {
             console.log('Request: ', friend)
             friends.push(JSON.parse(friend))
         })
+        req.pipe(res)
     }else if (req.method === 'GET' && items[1] == 'friends') {
         // res.writeHead(200, {
         //     'Content-Type': 'application/json',
@@ -64,7 +65,3 @@ server.listen(PORT, () => {
     console.log(`Listening on port ${PORT}...`);
 })
 
-// fetch('http://localhost:3000/friends', {
-//     method: 'POST',
-//     body: JSON.stringify({ id: 3, name: 'John Doe'})
-// })
